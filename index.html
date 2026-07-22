@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Drift | AI Spend Guard</title>
+    <meta
+      name="description"
+      content="Drift predicts impulsive spending risk in real time and suggests interventions before checkout."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-noise"></div>
+
+    <header class="topbar">
+      <a href="#" class="brand" aria-label="Drift home">
+        <span class="brand-mark">DRIFT</span>
+        <span>Spending Intelligence</span>
+      </a>
+
+      <nav class="top-links" aria-label="Primary">
+        <a href="#features">Features</a>
+        <a href="#how">Pipeline</a>
+        <a href="#model">Model View</a>
+        <a href="#demo">Live Demo</a>
+      </nav>
+
+      <a href="#demo" class="cta-link">Try Live Inference</a>
+    </header>
+
+    <main>
+      <section class="hero panel-shell panel-elevated">
+        <div class="hero-copy">
+          <p class="eyebrow">Impulse Spending Assistant</p>
+          <h1>AI that predicts and blocks spending mistakes before they happen.</h1>
+          <p class="lead">
+            Drift reads your spending context, estimates risk in seconds, then triggers a soft
+            intervention: pause, suggest alternatives, and protect your monthly targets.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="#how">Explore the pipeline</a>
+            <a class="ghost" href="#model">Open model flow</a>
+          </div>
+          <p class="hero-note">
+            Demo-only interface. Not connected to bank APIs. Designed for your product landing page.
+          </p>
+        </div>
+
+        <aside class="hero-side panel-console">
+          <div class="terminal-header">
+            <span></span>
+            <span></span>
+            <span></span>
+            <strong>drift-console</strong>
+          </div>
+          <pre>
+$ drift initialize
+status: reading context signals
+status: calibrating spend pattern
+score: computing
+action: waiting for impulse trigger
+          </pre>
+        </aside>
+      </section>
+
+      <section class="stats panel-grid" aria-label="Key performance metrics">
+        <article class="panel-shell">
+          <p class="stat-number">68%</p>
+          <p>of impulse decisions come from emotional spikes.</p>
+        </article>
+        <article class="panel-shell">
+          <p class="stat-number">2.7x</p>
+          <p>better budget stability using timed cooling prompts.</p>
+        </article>
+        <article class="panel-shell">
+          <p class="stat-number">24 / 7</p>
+          <p>signal processing using context, urgency, and category behavior.</p>
+        </article>
+      </section>
+
+      <section class="section" id="features">
+        <p class="section-tag">Built for control</p>
+        <h2>Stop impulse spending without adding friction.</h2>
+        <div class="feature-grid">
+          <article class="card panel-shell">
+            <h3>Smart Predictive Core</h3>
+            <p>
+              Drift scores purchases using amount, urge pressure, time context, and current budget state.
+            </p>
+          </article>
+          <article class="card panel-shell">
+            <h3>Adaptive Cooldown</h3>
+            <p>
+              Dynamic hold timers and reflection prompts are generated for each decision instead of rigid limits.
+            </p>
+          </article>
+          <article class="card panel-shell">
+            <h3>Behavior Improvement Loop</h3>
+            <p>
+              Feedback from each action updates thresholds and improves future predictions to reduce friction.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="how">
+        <p class="section-tag">Processing pipeline</p>
+        <h2>From signals to decision in a single pass.</h2>
+
+        <div class="timeline">
+          <article class="timeline-step panel-shell">
+            <span class="step-index">01</span>
+            <h3>Signal Collection</h3>
+            <p>Collect amount, category, urgency, time window, and user state values.</p>
+          </article>
+          <article class="timeline-step panel-shell">
+            <span class="step-index">02</span>
+            <h3>Model Scoring</h3>
+            <p>Apply weighted risk logic and machine scoring rules on the current request.</p>
+          </article>
+          <article class="timeline-step panel-shell">
+            <span class="step-index">03</span>
+            <h3>Guardrail Layer</h3>
+            <p>Choose delay and suggested alternatives if risk crosses thresholds.</p>
+          </article>
+          <article class="timeline-step panel-shell">
+            <span class="step-index">04</span>
+            <h3>Learning Layer</h3>
+            <p>Record outcomes and refine predictions from user confirmations and skips.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section model-section" id="model">
+        <p class="section-tag">Architecture view</p>
+        <h2>Model pipeline, visualized.</h2>
+        <div class="model-frame panel-shell">
+          <img
+            src="assets/processing-model.svg"
+            alt="Flow chart showing Drift model from signals to risk scoring and interventions"
+          />
+        </div>
+        <p class="model-caption">
+          Signal ingestion, scoring, intervention, and learning are linked in a feedback loop for steady
+          decision quality improvements.
+        </p>
+      </section>
+
+      <section class="section demo panel-shell" id="demo">
+        <p class="section-tag">Live predictor</p>
+        <h2>Run an example spend event.</h2>
+
+        <div class="demo-grid">
+          <form id="predictor-form" class="panel panel-shell">
+            <label>
+              Purchase Amount (INR)
+              <input type="number" id="amount" min="10" value="1200" />
+            </label>
+
+            <label>
+              Category
+              <select id="category">
+                <option value="essential">Essential</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="food">Food and drinks</option>
+                <option value="shopping">Shopping</option>
+                <option value="travel">Travel</option>
+              </select>
+            </label>
+
+            <label>
+              Urge level
+              <input
+                type="range"
+                id="urge"
+                min="1"
+                max="10"
+                value="6"
+                list="urgeMarks"
+              />
+              <datalist id="urgeMarks">
+                <option value="1" label="low"></option>
+                <option value="10" label="high"></option>
+              </datalist>
+              <output id="urgeValue">6</output>
+            </label>
+
+            <label>
+              Days since last paycheck
+              <input type="number" id="daysUntilPayday" min="0" max="45" value="14" />
+            </label>
+
+            <label>
+              Time of day
+              <select id="timeOfDay">
+                <option value="morning">Morning</option>
+                <option value="afternoon">Afternoon</option>
+                <option value="evening">Evening</option>
+                <option value="lateNight">Late Night</option>
+              </select>
+            </label>
+
+            <label>
+              Decision state
+              <select id="state">
+                <option value="stable">I can pause and decide calmly</option>
+                <option value="stressed">I feel stressed or overwhelmed</option>
+                <option value="tired">I am tired and low on focus</option>
+              </select>
+            </label>
+
+            <button type="submit" class="submit-button">
+              <span class="btn-text">Run Inference</span>
+              <span class="btn-spinner" aria-hidden="true"></span>
+            </button>
+
+            <p class="hint">Demo model: no live API calls are connected.</p>
+          </form>
+
+          <aside class="panel result" id="resultPanel" aria-live="polite">
+            <p class="result-title">Risk score</p>
+
+            <div class="meter">
+              <span id="riskLabel">Waiting for input</span>
+              <div class="bar-wrap">
+                <div class="bar-fill" id="riskBar"></div>
+              </div>
+            </div>
+
+            <p id="recommendation">Set your values above and click Run Inference.</p>
+
+            <ul class="result-list">
+              <li>Predicted risk: <strong id="riskPercent">--</strong></li>
+              <li>Suggested delay: <strong id="suggestedDelay">--</strong></li>
+              <li>Alternative: <strong id="alternative">--</strong></li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        © 2026 Drift. Built for mindful spending behavior. Not a banking service.
+        <a href="mailto:hello@drift-ai.app">hello@drift-ai.app</a>
+      </p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
